@@ -1,0 +1,28 @@
+﻿<views:MvxContentPage x:TypeArguments="viewModels:AllNewsViewModel"
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:NewsApp.Core;assembly=NewsApp.Core"
+    x:Class="Newsapp.Forms.UI.Pages.AllNewsView">
+    <ContentPage.Content>
+        <StackLayout Margin="10" Orientation="Horizontal">
+
+            <Label Text="General" />
+            <CheckBox IsChecked ="{Binding General, Mode=TwoWay}"/>
+
+            <Label Text="Sports"/>
+            <CheckBox IsChecked ="{Binding Sports, Mode=TwoWay}"/>
+
+            <Label Text="Health" />
+            <CheckBox IsChecked ="{Binding Health, Mode=TwoWay}"/>
+
+            <Label Text="Tech"/>
+            <CheckBox IsChecked ="{Binding Tech, Mode=TwoWay}"/>
+
+            <Label Text="Food"/>
+            <CheckBox IsChecked ="{Binding Food, Mode=TwoWay}"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</views:MvxContentPage>
