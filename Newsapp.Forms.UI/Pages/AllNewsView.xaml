@@ -4,25 +4,80 @@
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
     xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
     xmlns:viewModels="clr-namespace:NewsApp.Core;assembly=NewsApp.Core"
+    xmlns:local="clr-namespace:Newsapp.Forms.UI.Pages"
+    xmlns:core="clr-namespace:NewsApp.Core;assembly=NewsApp.Core"
     x:Class="Newsapp.Forms.UI.Pages.AllNewsView">
+
     <ContentPage.Content>
-        <StackLayout Margin="10" Orientation="Horizontal">
+        
 
-            <Label Text="General" />
-            <CheckBox IsChecked ="{Binding General, Mode=TwoWay}"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100" />
+                <RowDefinition Height="100" />
+                <RowDefinition Height="100" />
+                <RowDefinition Height="100" />
+            </Grid.RowDefinitions>
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
 
-            <Label Text="Sports"/>
-            <CheckBox IsChecked ="{Binding Sports, Mode=TwoWay}"/>
+           <!-- <Grid.Resources>
+                <DataTemplate x:Key="As" x:DataType="{x:Type core:AllNewsModel}">
+                    <local:NewsList/>
+                </DataTemplate>
+            </Grid.Resources>-->
 
-            <Label Text="Health" />
-            <CheckBox IsChecked ="{Binding Health, Mode=TwoWay}"/>
 
-            <Label Text="Tech"/>
-            <CheckBox IsChecked ="{Binding Tech, Mode=TwoWay}"/>
 
-            <Label Text="Food"/>
-            <CheckBox IsChecked ="{Binding Food, Mode=TwoWay}"/>
 
-        </StackLayout>
+            <!-- <BoxView Grid.Row="0"
+                 Grid.ColumnSpan="2"
+                 Color="Purple" />
+            <Label Height="Auto" Background="LightGray" FontSize="20" Text="{Binding Search, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+           
+            <BoxView Grid.Row="0"
+                 Grid.ColumnSpan="2"
+                 Color="Red" /> -->
+            <Button Grid.Row="0"  Text="Find News!" FontSize="20" Command="{Binding DoWorkCommand }" />
+
+            
+            <ListView RowHeight="500"   ItemsSource="{Binding NewsList}" Margin="4" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="4">
+                <ListView.ItemTemplate >
+                    <DataTemplate >
+                        <ViewCell >
+                            <StackLayout >
+                                <Label Text="{Binding Title}"/>
+                                <Label Text="{Binding Content}"/>
+                                <Image Source="{Binding Image}"/>
+                            </StackLayout>
+
+                        </ViewCell>
+                    </DataTemplate>
+                     
+                </ListView.ItemTemplate>
+                    
+            </ListView>
+        </Grid>
+
+        <!-- <Label Text="General" />
+                <CheckBox IsChecked ="{Binding General, Mode=TwoWay}" />
+
+                <Label Text="Sports"/>
+                <CheckBox IsChecked ="{Binding Sports, Mode=TwoWay}"/>
+
+                <Label Text="Health" />
+                <CheckBox IsChecked ="{Binding Health, Mode=TwoWay}"/>
+
+                <Label Text="Tech"/>
+                <CheckBox IsChecked ="{Binding Tech, Mode=TwoWay}"/>
+
+                <Label Text="Food"/>
+                <CheckBox IsChecked ="{Binding Food, Mode=TwoWay}"/>
+
+            </StackLayout>-->
+        
     </ContentPage.Content>
 </views:MvxContentPage>
