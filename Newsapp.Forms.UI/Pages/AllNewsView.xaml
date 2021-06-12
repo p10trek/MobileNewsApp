@@ -6,106 +6,172 @@
     xmlns:viewModels="clr-namespace:NewsApp.Core;assembly=NewsApp.Core"
     xmlns:local="clr-namespace:Newsapp.Forms.UI.Pages"
     xmlns:core="clr-namespace:NewsApp.Core;assembly=NewsApp.Core"
+    
     x:Class="Newsapp.Forms.UI.Pages.AllNewsView">
-
+    
+    
     <ContentPage.Content>
-
-
+        
+        <ScrollView HeightRequest="1645">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="20" /> <!--Row0-->
-                <RowDefinition Height="20" /> <!--Row1-->
-                <RowDefinition Height="20" /> <!--Row2-->
-                <RowDefinition Height="20" /> <!--Row3-->
-                <RowDefinition Height="20"/> <!--Row4-->
-                <RowDefinition Height="*" /> <!--Row5-->
-                <RowDefinition Height="*" /> <!--Row6-->
-                <RowDefinition Height="2*" /> <!--Row7-->
+                <RowDefinition Height="40" />
+                <!--Row0-->
+                <RowDefinition Height="40" />
+                <!--Row1-->
+                <RowDefinition Height="40" />
+                <!--Row2-->
+                <RowDefinition Height="25" />
+                <!--Row3-->
+                <RowDefinition Height="25" />
+                <!--Row4-->
+                <RowDefinition Height="25" />
+                <!--Row5-->
+                <RowDefinition Height="25" />
+                <!--Row6-->
+                <RowDefinition Height="25"/>
+                <!--Row7-->
+                <RowDefinition Height="50" />
+                <!--Row8-->
+                <RowDefinition Height="50" />
+                <!--Row9-->
+                <RowDefinition Height="200" />
+                <!--Row10-->
+                <RowDefinition Height="100" />
+                <!--Row11-->
+                <RowDefinition Height="*" />
+                <!--Row12-->
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="85"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
+
             </Grid.ColumnDefinitions>
-
-            <!--Row0 Column0-->
-            <StackLayout Orientation="Horizontal"  Grid.Row="0" Grid.Column="0">
-            <CheckBox IsChecked ="{Binding General, Mode=TwoWay}"/>
-            <Label Text="General" />
-            </StackLayout>
-
-            <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
-            <CheckBox IsChecked ="{Binding Sports, Mode=TwoWay }"/>
-            <Label Text="Sports" ></Label>
-            </StackLayout>
-
-            <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.Column="0" >
-            <CheckBox IsChecked ="{Binding Health, Mode=TwoWay}"/>
-            <Label Text="Health" ></Label>
-            </StackLayout>
-
-            <StackLayout Orientation="Horizontal" Grid.Row="3" Grid.Column="0" >
-            <CheckBox IsChecked ="{Binding Tech, Mode=TwoWay}"/>
-            <Label Text="Tech" ></Label>
-            </StackLayout>
-
-            <StackLayout Orientation="Horizontal" Grid.Row="4" Grid.Column="0" >
-            <CheckBox IsChecked ="{Binding Food, Mode=TwoWay}"/>
-            <Label Text="Food"></Label>
-            </StackLayout>
             
-            <!--Row0 Column0-->
-            <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="1" >
-            <CheckBox IsChecked ="{Binding Science, Mode=TwoWay}"/>
-            <Label Text="Science"></Label>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="0" Grid.ColumnSpan="4">
+                    <Button Text="Quick Search" Grid.Column="0" Command="{Binding ShowQSearchCommand }" ></Button>
+                    <Button Text="Advance Search" Grid.Column="1" Command="{Binding ShowASearchCommand }"></Button>
+                    <Button Text="Preferences" Grid.Column="2" Command="{Binding ShowPreferencesCommand }" IsVisible="{Binding IsSignIn}"> </Button>
+                </StackLayout>
+            
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="1" Grid.ColumnSpan="4">
+                    <Button Text="Favorites" Grid.Column="3" Command="{Binding ShowFavoritesCommand }" IsVisible="{Binding IsSignIn}"></Button>
+                    <Button Text="History" Grid.Column="4" Command="{Binding ShowHistoryCommand }" IsVisible="{Binding IsSignIn}"></Button>
+                    <Button Text="Login/Register"  Grid.Column="5" Command="{Binding ShowSignInCommand }" IsVisible="{Binding IsSignInButtonVisible}"></Button>
+                    <Button Text="Add to favorites" Command="{Binding AddToFavoritesCommand }" IsVisible="{Binding IsSignIn}"  ></Button>
+                </StackLayout>
+            
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="2" Grid.ColumnSpan="4">
+                    <Button Text="Logout" Grid.Column="5" Command="{Binding LogOutCommand }"  IsVisible="{Binding IsLogOutButtonVisible}"></Button>
+                    <Button Text="Save Prefereces" Command="{Binding SavePreferencesCommand }" IsVisible="{Binding IsSignIn}" />
+                    <Button Text="Find similar news" Command="{Binding SimilarNewsAsyncCommand }" IsVisible="{Binding IsSignIn}" ></Button>
+                </StackLayout>
+                <!--Row3 Column0-->
+            
+            <StackLayout Orientation="Horizontal"  Grid.Row="3" Grid.Column="0">
+                <CheckBox IsChecked ="{Binding General, Mode=TwoWay}"/>
+                <Label Text="General" />
             </StackLayout>
 
-            <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="1" >
-            <CheckBox IsChecked ="{Binding Business, Mode=TwoWay}"/>
-            <Label Text="Business"></Label>
+            <StackLayout Orientation="Horizontal" Grid.Row="4" Grid.Column="0">
+                <CheckBox IsChecked ="{Binding Sports, Mode=TwoWay }"/>
+                <Label Text="Sports" ></Label>
             </StackLayout>
 
-            <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.Column="1" >
-            <CheckBox IsChecked ="{Binding Entertainment, Mode=TwoWay}"/>
-            <Label Text="Entertainment"></Label>
+            <StackLayout Orientation="Horizontal" Grid.Row="5" Grid.Column="0" >
+                <CheckBox IsChecked ="{Binding Health, Mode=TwoWay}"/>
+                <Label Text="Health" ></Label>
             </StackLayout>
 
+            <StackLayout Orientation="Horizontal" Grid.Row="6" Grid.Column="0" >
+                <CheckBox IsChecked ="{Binding Tech, Mode=TwoWay}"/>
+                <Label Text="Tech" ></Label>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Grid.Row="7" Grid.Column="0" >
+                <CheckBox IsChecked ="{Binding Food, Mode=TwoWay}"/>
+                <Label Text="Food"></Label>
+            </StackLayout>
+
+            <!--Row3 Column1-->
             <StackLayout Orientation="Horizontal" Grid.Row="3" Grid.Column="1" >
-            <CheckBox IsChecked ="{Binding Politics, Mode=TwoWay}"/>
-            <Label Text="Politics"></Label>
+                <CheckBox IsChecked ="{Binding Science, Mode=TwoWay}"/>
+                <Label Text="Science"></Label>
             </StackLayout>
 
-            <StackLayout Orientation="Horizontal"  Grid.Row="4" Grid.Column="1">
-            <CheckBox IsChecked ="{Binding Travel, Mode=TwoWay}"/>
-            <Label Text="Travel"></Label>
+            <StackLayout Orientation="Horizontal" Grid.Row="4" Grid.Column="1" >
+                <CheckBox IsChecked ="{Binding Business, Mode=TwoWay}"/>
+                <Label Text="Business"></Label>
             </StackLayout>
-            
+
+            <StackLayout Orientation="Horizontal" Grid.Row="5" Grid.Column="1" >
+                <CheckBox IsChecked ="{Binding Entertainment, Mode=TwoWay}"/>
+                <Label Text="Entertainment" FontSize="10"></Label>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Grid.Row="6" Grid.Column="1" >
+                <CheckBox IsChecked ="{Binding Politics, Mode=TwoWay}"/>
+                <Label Text="Politics"></Label>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Grid.Row="7" Grid.Column="1">
+                <CheckBox IsChecked ="{Binding Travel, Mode=TwoWay}"/>
+                <Label Text="Travel"></Label>
+            </StackLayout>
+
+            <!--Row3 Column2-->
+            <StackLayout Grid.Row="3" Grid.Column="2" Grid.RowSpan="3">
+                <Label Margin="5" FontSize="14" Text="Search query" />
+                <Label Margin="5" FontSize="14" Text="Domains" />
+                <Label Margin="5" FontSize="14" Text="Languages" />
+                <Label Margin="5" FontSize="14" Text="Date from" />
+            </StackLayout>
+
+            <!--Row3 Column3-->
+            <StackLayout Grid.Row="3" Grid.Column="3" Grid.RowSpan="3" >
+                <Entry BackgroundColor="LightGray" FontSize="10" Text="{Binding Search, Mode=TwoWay}" />
+                <Entry BackgroundColor="LightGray" FontSize="10"  Text="{Binding Domains, Mode=TwoWay}" />
+                <Entry BackgroundColor="LightGray" FontSize="10"  Text="{Binding Language, Mode=TwoWay}" />
+                
+            </StackLayout>
+
+
             <!--Wprowadznie teskstu  "Editor- Multi-line, Entry-Single-line-->
-            <Entry Grid.Row="5" Grid.ColumnSpan="4" FontSize="20" Placeholder="Wprowadź wyszukiwaną fraze" Text="{Binding Search, Mode=TwoWay}"/>
+            <Entry Grid.Row="8" Grid.ColumnSpan="4" FontSize="20" Placeholder="Wprowadź wyszukiwaną fraze" Text="{Binding Search, Mode=TwoWay}"/>
             <!--Przycisk-->
-            <Button Grid.Row="6" Grid.ColumnSpan="4" Text="Find News!" FontSize="20" Command="{Binding DoWorkCommand }" />
-
-            <!--Widok wyników-->
-            <ListView RowHeight="200"   ItemsSource="{Binding NewsList}" Margin="4" Grid.Row="7" Grid.ColumnSpan="4">
+            <Button Grid.Row="9" Grid.ColumnSpan="4" Text="Find News!" FontSize="20"  Command="{Binding SearchNewsAsyncCommand }" />
+            <!--Favorites-->
+                <ListView Grid.Row="11"  Grid.ColumnSpan="4" ItemsSource="{Binding FavoritesList}" Margin="4" ></ListView>
+            <!--History-->
+                <ListView Grid.Row="11" Grid.ColumnSpan="4" ItemsSource="{Binding HistoryList}" Margin="4"/>
+                <WebView HeightRequest="400" WidthRequest="300" Grid.Row="12" Grid.ColumnSpan="4" Source="{Binding SelectedUrl}" Navigated="webviewNavigated" Navigating="webviewNavigating"></WebView>
+                <!--Widok wyników-->
+            <ListView  RowHeight="200" ItemsSource="{Binding NewsList}" Margin="4" Grid.Row="12" Grid.ColumnSpan="4" BackgroundColor="Blue" SelectedItem="{Binding SelectedItem}" ItemSelected="ListView_ItemSelected">
                 <ListView.ItemTemplate >
                     <DataTemplate >
                         <ViewCell >
-                            <StackLayout >
-                                <Label Text="{Binding Title}"/>
-                                <Label Text="{Binding Content}"/>
-                                <Image Source="{Binding Image}"/>
-                            </StackLayout>
-
-                        </ViewCell>
+                                <StackLayout >
+                                    <Label Text="{Binding Title}" />
+                                    <Label Text="{Binding Content}"/>
+                                    <Image Source="{Binding Image}"/>
+                                </StackLayout>
+                            </ViewCell>
                     </DataTemplate>
 
                 </ListView.ItemTemplate>
 
             </ListView>
-
-        </Grid>
-
+                <StackLayout Grid.Row="10" Grid.ColumnSpan="4" >
+                    <!--<Button Text="Register/login" FontSize="20" Command="{Binding ShowSignInCommand }" />-->
+                    <Entry Placeholder="Login" IsVisible="{Binding IsSignInVisible}" Text="{Binding Login, Mode=TwoWay}"/>
+                    <Entry IsPassword="True" Placeholder="Password" IsVisible="{Binding IsSignInVisible}" Text="{Binding Password, Mode=TwoWay}"/>
+                    <Entry Placeholder="Token" IsVisible="{Binding IsSignInVisible}" Text="{Binding Token, Mode=TwoWay}"/>
+                    <Button IsVisible="{Binding IsSignInVisible}" Text="Sign In" Command="{Binding SignInCommand}"/>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </views:MvxContentPage>

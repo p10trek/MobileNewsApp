@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Newsapp.Forms.UI
+﻿namespace Newsapp.Forms.UI
 {
     public class Class1
     {
