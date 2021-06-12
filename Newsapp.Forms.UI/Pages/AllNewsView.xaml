@@ -41,7 +41,8 @@
                 <!--Row11-->
                 <RowDefinition Height="*" />
                 <!--Row12-->
-            </Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
@@ -144,11 +145,12 @@
             <!--Przycisk-->
             <Button Grid.Row="9" Grid.ColumnSpan="4" Text="Find News!" FontSize="20"  Command="{Binding SearchNewsAsyncCommand }" />
             <!--Favorites-->
-                <ListView Grid.Row="11"  Grid.ColumnSpan="4" ItemsSource="{Binding FavoritesList}" Margin="4" ></ListView>
+            <ListView Grid.Row="11"  Grid.ColumnSpan="4" ItemsSource="{Binding FavoritesList}" Margin="4" ></ListView>
             <!--History-->
-                <ListView Grid.Row="11" Grid.ColumnSpan="4" ItemsSource="{Binding HistoryList}" Margin="4"/>
-                <WebView HeightRequest="400" WidthRequest="300" Grid.Row="12" Grid.ColumnSpan="4" Source="{Binding SelectedUrl}" Navigated="webviewNavigated" Navigating="webviewNavigating"></WebView>
-                <!--Widok wyników-->
+            <ListView Grid.Row="11" Grid.ColumnSpan="4" ItemsSource="{Binding HistoryList}" Margin="4"/>
+            <!--Przeglądarka-->
+                <WebView HeightRequest="1000" WidthRequest="200" Grid.Row="13" Grid.ColumnSpan="4"  Source="{Binding SelectedURL}" BackgroundColor="Red"></WebView>
+            <!--Widok wyników-->
             <ListView  RowHeight="200" ItemsSource="{Binding NewsList}" Margin="4" Grid.Row="12" Grid.ColumnSpan="4" BackgroundColor="Blue" SelectedItem="{Binding SelectedItem}" ItemSelected="ListView_ItemSelected">
                 <ListView.ItemTemplate >
                     <DataTemplate >

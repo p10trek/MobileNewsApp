@@ -15,7 +15,8 @@ namespace Newsapp.Forms.UI.Pages
 
         private void ListView_ItemSelected(object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
         {
-
+            var vm = (AllNewsViewModel)this.DataContext;
+            vm.ShowBrowser();
         }
     }
 }
